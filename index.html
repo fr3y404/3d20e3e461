@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> The Stoic Hacker </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel='stylesheet' href='//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.css'>
+    <style> body { background-color: #000; color: #0f0; font-family: "Hack", monospace; display: flex; justify-content: center; align-items: center; height: 100vh; } .form-container { border-radius: 10px; max-width: 400px; width: 100%; } .form-control { background-color: rgba(0, 0, 0, 0); border: 0px dotted lime; color: #0f0; } .form-control:focus { background-color: rgba(0, 0, 0, 0.8); color: #0f0; box-shadow: none; border: 1px dotted lime; } @media (max-width: 768px) { .form-container { max-width: 300px; } } .matrix-bg { position: fixed; top: 0; left: 0; right: 0; bottom: 0; pointer-events: none; z-index: -1; background-color: #000; opacity: 0.9; overflow: hidden; } .matrix-bg:before { position: absolute; top: 0; left: 0; right: 0; bottom: 0; pointer-events: none; z-index: -1; opacity: 0.6; animation: matrix-anim 20s linear infinite; } @keyframes matrix-anim { 0% { transform: translateY(0); } 100% { transform: translateY(-100%); } } .matrix-text { position: absolute; top: 0; left: 0; right: 0; bottom: 0; pointer-events: none; z-index: -1; opacity: 1; animation: matrix-text-anim 2s linear infinite; } @keyframes matrix-text-anim { 0% { opacity: 0; } 20% { opacity: 1; } 80% { opacity: 1; } 100% { opacity: 0; } } .matrix-text span { position: absolute; display: block; width: 20px; height: 20px; font-size: 18px; line-height: 1; white-space: nowrap; transform: translateY(-100%); animation: animate 15s linear infinite; } @keyframes animate { 0% { transform: translateY(-100%); } 100% { transform: translateY(100%); } } canvas { display: block; } h3 { font-size: 22px; text-align: center; }</style>
+    <link rel="shortcut icon" href="https://pub-dd2c93c4df1b481aad8b203d20e3e461.r2.dev/fav.png" type="image/x-icon">
+</head>
+<body>
+  <div class="matrix-bg">
+    <canvas></canvas>
+  </div>
+  
+  <div class="form-container">
+    <h3>Kode yang Membentuk Takdir</h3>
+      <form method="post" action="">
+          <div class="form-group">
+              <input type="password" name="password" id="password" class="form-control">
+          </div>
+      </form>
+  </div>
+  <script> var canvas = document.querySelector('canvas'), ctx = canvas.getContext('2d'); canvas.width = window.innerWidth; canvas.height = window.innerHeight; var letters = 'ã‚¢ã‚¡ã‚«ã‚µã‚¿ãƒŠãƒãƒžãƒ¤ãƒ£ãƒ©ãƒ¯ã‚¬ã‚¶ãƒ€ãƒãƒ‘ã‚¤ã‚£ã‚­ã‚·ãƒãƒ‹ãƒ’ãƒŸãƒªãƒ°ã‚®ã‚¸ãƒ‚ãƒ“ãƒ”ã‚¦ã‚¥ã‚¯ã‚¹ãƒ„ãƒŒãƒ•ãƒ ãƒ¦ãƒ¥ãƒ«ã‚°ã‚ºãƒ–ãƒ…ãƒ—ã‚¨ã‚§ã‚±ã‚»ãƒ†ãƒãƒ˜ãƒ¡ãƒ¬ãƒ±ã‚²ã‚¼ãƒ‡ãƒ™ãƒšã‚ªã‚©ã‚³ã‚½ãƒˆãƒŽãƒ›ãƒ¢ãƒ¨ãƒ§ãƒ­ãƒ²ã‚´ã‚¾ãƒ‰ãƒœãƒãƒ´ãƒƒãƒ³'; letters = letters.split(''); var fontSize = 10, columns = canvas.width / fontSize; var drops = []; for (var i = 0; i < columns; i++) { drops[i] = 1; } function draw() { ctx.fillStyle = 'rgba(0, 0, 0, .1)'; ctx.fillRect(0, 0, canvas.width, canvas.height); for (var i = 0; i < drops.length; i++) { var text = letters[Math.floor(Math.random() * letters.length)]; ctx.fillStyle = '#0f0'; ctx.fillText(text, i * fontSize, drops[i] * fontSize); drops[i]++; if (drops[i] * fontSize > canvas.height && Math.random() > .95) { drops[i] = 0; } } } setInterval(draw, 33); </script>
+</body>
+</html>
